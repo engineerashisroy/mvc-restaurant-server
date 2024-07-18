@@ -16,7 +16,7 @@ app.use(express.static("public/temp"));
 app.use(cookieParser());
 //just test route
 app.get("/", (req, res) => {
-  res.send("hello express");
+  res.send("hello Restaurant");
 });
 //route calling
 
