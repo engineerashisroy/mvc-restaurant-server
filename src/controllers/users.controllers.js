@@ -30,6 +30,7 @@ const userGetController = asyncHandler(async (req, res, next) => {
     throw new ApiError(500, "Internal server error");
   }
 });
+//user delete api
 const userDeleteController = asyncHandler(async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -41,8 +42,8 @@ const userDeleteController = asyncHandler(async (req, res, next) => {
     throw new ApiError(500, "Internal server error");
   }
 });
-
-const userAdminController = asyncHandler(async (req, res, next) => {
+//admin api
+const userAdminController = asyncHandler(async (req, res) => {
   try {
     const id = req.params.id;
     const filter = { _id: id };
@@ -63,8 +64,10 @@ const userAdminController = asyncHandler(async (req, res, next) => {
 const userAdminOrNotController = asyncHandler(async (req, res) => {
   try {
     const email = req.params.email;
+    const decodedEmail=req.decoded.email;
+    console.log(decodedEmail);
     console.log("user admin or not controller", email);
-    if (email !== req.decoded.email) {
+    if (email !== decodedEmail) {
       return res.status(403).send({ message: "unauthorized access" });
     }
     const query = { email: email };

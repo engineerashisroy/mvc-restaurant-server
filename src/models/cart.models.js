@@ -4,25 +4,25 @@ const cartSchema = new mongoose.Schema(
   {
     menuId: {
       type: String,
-      // require: true,
+      required: true,
     },
     name: {
       type: String,
-      // require: true,
+      required: true,
     },
     email: {
       type: String,
-      // require: true,
+      required: true,
     },
 
     image: {
       type: String,
-      // require: true,
+      required: true,
     },
 
     price: {
       type: String,
-      // require: true,
+      required: true,
     },
   },
   { timestamps: true }

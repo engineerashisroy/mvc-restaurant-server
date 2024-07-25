@@ -4,15 +4,15 @@ const reviewSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
     },
     details: {
       type: String,
-      require: true,
+      required: true,
     },
     rating: {
       type: String,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }
