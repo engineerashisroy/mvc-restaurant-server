@@ -53,4 +53,10 @@ const menuItemPatch = asyncHandler(async (req, res) => {
   }
 });
 
-export { menuItem, menuItemPost, menuItemDelete, menuItemGetById };
+export {
+  menuItem,
+  menuItemPost,
+  menuItemDelete,
+  menuItemGetById,
+  menuItemPatch,
+};
