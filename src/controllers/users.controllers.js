@@ -1,5 +1,4 @@
 import { User } from "../models/users.models.js";
-import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 const usersController = asyncHandler(async (req, res, next) => {
@@ -17,7 +16,7 @@ const usersController = asyncHandler(async (req, res, next) => {
     res.status(200).send(result);
   } catch (error) {
     console.error(error);
-    throw new ApiError(500, "Internal server error");
+    throw new Error(500, "Internal server error");
   }
 });
 const userGetController = asyncHandler(async (req, res, next) => {
@@ -27,7 +26,7 @@ const userGetController = asyncHandler(async (req, res, next) => {
     res.status(200).send(result);
   } catch (error) {
     console.error(error);
-    throw new ApiError(500, "Internal server error");
+    throw new Error(500, "Internal server error");
   }
 });
 //user delete api
@@ -39,7 +38,7 @@ const userDeleteController = asyncHandler(async (req, res, next) => {
     res.status(200).send(result);
   } catch (error) {
     console.error(error);
-    throw new ApiError(500, "Internal server error");
+    throw new Error(500, "Internal server error");
   }
 });
 //admin api
@@ -57,14 +56,14 @@ const userAdminController = asyncHandler(async (req, res) => {
     res.status(200).send(result);
   } catch (error) {
     console.error(error);
-    throw new ApiError(500, "Internal Server Error");
+    throw new Error(500, "Internal Server Error");
   }
 });
 //admin or not checking
 const userAdminOrNotController = asyncHandler(async (req, res) => {
   try {
     const email = req.params.email;
-    const decodedEmail=req.decoded.email;
+    const decodedEmail = req.decoded.email;
     console.log(decodedEmail);
     console.log("user admin or not controller", email);
     if (email !== decodedEmail) {
@@ -79,7 +78,7 @@ const userAdminOrNotController = asyncHandler(async (req, res) => {
     }
     res.send({ admin });
   } catch (error) {
-    throw new ApiError(500, "Internal server error");
+    throw new Error(500, "Internal server error");
   }
 });
 export {

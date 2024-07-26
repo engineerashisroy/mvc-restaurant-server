@@ -1,6 +1,5 @@
 import { Cart } from "../models/cart.models.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/apiError.js";
 
 const cartController = asyncHandler(async (req, res, next) => {
   try {
@@ -10,7 +9,7 @@ const cartController = asyncHandler(async (req, res, next) => {
     res.status(200).send(cart);
   } catch (error) {
     console.error(error);
-    throw new ApiError(500, "Internal server error");
+    throw new Error(500, "Internal server error");
   }
 });
 const cartGetController = asyncHandler(async (req, res, next) => {
@@ -22,7 +21,7 @@ const cartGetController = asyncHandler(async (req, res, next) => {
     res.status(200).send(cart);
   } catch (error) {
     console.error(error);
-    throw new ApiError(500, "Internal server error");
+    throw new Error(500, "Internal server error");
   }
 });
 //delete one item
@@ -32,12 +31,12 @@ const cartItemDeleteController = asyncHandler(async (req, res, next) => {
     const query = { _id: id };
     const result = await Cart.deleteOne(query);
     if (result.deletedCount === 0) {
-      return next(new ApiError(404, "Cart item not found"));
+      return next(new Error(404, "Cart item not found"));
     }
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    next(new ApiError(500, "Internal server error"));
+    next(new Error(500, "Internal server error"));
   }
 });
 

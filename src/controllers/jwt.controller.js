@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { ApiError } from "../utils/apiError.js";
 
 const tokenController = async (req, res) => {
   try {
@@ -9,7 +8,7 @@ const tokenController = async (req, res) => {
     });
     res.send({ token });
   } catch (error) {
-    throw new ApiError(403, { message: " Unauthorized access" });
+    throw new Error(403, { message: " Unauthorized access" });
   }
 };
 export default tokenController;
