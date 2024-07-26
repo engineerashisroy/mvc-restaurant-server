@@ -1,6 +1,12 @@
 {
     "version": 2,
-    "regions": ["sfo1"],
+    "regions": ["sfo1","cdg1"],
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@vercel/node"
+      }
+    ],
     "routes": [
       {
         "src": "/(.*)",
