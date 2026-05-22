@@ -2,6 +2,8 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 import { Menu } from "../models/menu.models.js";
 const menuItem = asyncHandler(async (req, res, next) => {
+
+  
   try {
     const menu = await Menu.find();
     // console.log(menu);

@@ -9,7 +9,7 @@ import userRouter from "./routes/user.routes.js";
 
 const port = process.env.PORT || 3001;
 //middlewares
-app.use(cors());
+// app.use(cors());
 app.use(
   cors({
     origin: "*",
@@ -26,7 +26,7 @@ app.use(express.static("public/temp"));
 app.use(cookieParser());
 //just test route
 app.get("/", (req, res) => {
-  res.send("hello Restaurant");
+  res.send("Ashis Roy Restaurant server running ");
 });
 //route calling
 

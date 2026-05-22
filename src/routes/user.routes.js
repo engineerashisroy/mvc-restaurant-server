@@ -13,6 +13,7 @@ import {
   cartItemDeleteController,
 } from "../controllers/cart.controllers.js";
 import {
+  loginController,
   userAdminController,
   userAdminOrNotController,
   userDeleteController,
@@ -29,8 +30,8 @@ router.route("/jwt").post(tokenController);
 
 router.route("/demo").get(demoRegister);
 
-//menu route
-//get all menu
+
+//get all menu route
 router.route("/menu").get(menuItem);
 router.route("/menu").post(verifyJWT, verifyAdmin, menuItemPost);
 router.route("/menu/:id").delete(verifyJWT, verifyAdmin, menuItemDelete);
@@ -45,7 +46,8 @@ router.route("/carts").get(cartGetController);
 //delete cart item
 router.route("/carts/:id").delete(cartItemDeleteController);
 //users route
-router.route("/users").post(usersController);
+router.route("/signup").post(usersController);
+router.route("/login").post(loginController);
 router.route("/users").get(verifyJWT, verifyAdmin, userGetController);
 router.route("/users/admin/:email").get(verifyJWT, userAdminOrNotController);
 // admin related api
