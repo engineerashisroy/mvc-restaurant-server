@@ -1,11 +1,14 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { User } from "../models/users.models.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 // create user
 const usersController = asyncHandler(async (req, res, next) => {
   try {
+
     const user = req.body;
+    let hashedPassword = null;
 
     console.log("create a new user:", user);
 
@@ -24,10 +27,14 @@ const usersController = asyncHandler(async (req, res, next) => {
     }
 
     // hash password
-    const hashedPassword = await bcrypt.hash(
-      user.password,
-      10
-    );
+    
+
+    if (user.password) {
+      hashedPassword = await bcrypt.hash(
+        user.password,
+        10
+      );
+    }
 
     // create new user object
     const newUser = {
@@ -211,6 +218,9 @@ const userAdminOrNotController = asyncHandler(async (req, res) => {
     throw new Error("Internal server error");
   }
 });
+
+
+
 
 export {
   usersController,
